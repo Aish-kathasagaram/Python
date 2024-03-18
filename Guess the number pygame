@@ -1,0 +1,42 @@
+import random
+name_user=input(str('ENTER YOUR NAME: '))
+greeting= "Hello, " + name_user.title() + "!"
+print(greeting)
+inpu= input(str("ARE YOU READY TO PLAY NUMBER GUESSING GAME? (yes/no)"))
+
+def confirm():
+    confirm.inp= inpu.strip() 
+    confirm.game = confirm.inp.lower()
+    confirm.rand = random.randint(1,100)
+    confirm.no= "NO PROBLEM!, have a good day!"
+def Startgame():
+    if (confirm.game != "yes" and confirm.game != "no"):
+        print("Enter valid option!")
+    elif confirm.game == "no":
+        print(confirm.no)
+    elif confirm.game== "yes" :
+       number= int(input("Take a guess!(1 to 100):"))
+       if number == confirm.rand:
+           print('WOW! U GOT IT RIGHT!\n')
+           inpu =input(str("Do you wanna play again? (yes/no)"))
+           confirm()
+           if inpu.lower() == "yes":
+               Startgame()
+           elif  inpu.lower()== "no":
+               print(confirm.no)
+           else:
+               quit
+       elif number < 1 or number>100:
+           print("Number not in range!")
+           Startgame()
+       elif number > confirm.rand:
+           print('Too High! Try again')
+           Startgame()
+       elif number < confirm.rand:
+           print("Too Low! Try again.s")
+           Startgame()
+    else:
+        #print("Enter a valid option!")
+        quit
+confirm()
+Startgame()
